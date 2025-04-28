@@ -158,7 +158,7 @@ Feel free to use, modify, and distribute WellWish with attribution.
 
 ## 👤 Author
 
-Crafted with ❤️ by **Rafi**
+Crafted with ❤️ by **Asad Shah**
 
 - [GitHub](https://github.com/iamasadshah)
 - [LinkedIn](https://linkedin.com/in/iamasadshah)
