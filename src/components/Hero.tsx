@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className=" min-h-screen pt-24 px-4 overflow-hidden">
-      <div className="container bg-gradient-to-br from-[#aaecf9] to-[#00b4d8] rounded-blob mx-auto flex flex-col-reverse lg:flex-row items-center max-w-6xl rounded-2xl px-6">
+    <section className=" min-h-screen py-24 px-4 overflow-hidden">
+      <div className="container bg-gradient-to-br from-[#aaecf9] to-[#00b4d8] rounded-blob mx-auto flex flex-col-reverse lg:flex-row items-center max-w-6xl rounded-2xl px-6 shadow-xl shadow-gray-500">
         {/* Left Content */}
         <div className="w-full lg:w-1/2 space-y-6 pt-8 lg:pt-0">
           <span className="inline-block bg-primary-dark/10 text-primary-dark px-4 py-2 rounded-full text-sm font-medium">
