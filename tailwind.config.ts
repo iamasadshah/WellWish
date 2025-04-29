@@ -2,14 +2,19 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        primary: '#00C897',
+        primary: {
+          lightest: "#caf0f8",
+          light: "#90e0ef",
+          DEFAULT: "#00b4d8",
+          dark: "#0077b6",
+        },
         secondary: '#FFD93D',
         accent: '#FF6B6B',
         background: '#F7FAFC',
@@ -29,6 +34,9 @@ const config: Config = {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
+      borderRadius: {
+        'blob': '63% 37% 54% 46% / 55% 48% 52% 45%'
+      }
     },
   },
   plugins: [],
