@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Image from "next/image";
+
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const socialLinks = [
@@ -12,8 +13,15 @@ export default function Footer() {
   return (
     <footer className=" text-white text-center px-8 py-10">
       {/* Company Info */}
-      <div>
-        <h3 className="text-lg font-semibold mb-2 text-[#03045e]">WellWish</h3>
+      <div className="flex flex-col justify-center items-center">
+        <Image
+          src="/assets/logo.png"
+          alt="logo"
+          width={1000}
+          height={1000}
+          className="w-12 h-6"
+        />
+        <h3 className="text-2xl font-semibold mb-2 text-[#03045e]">WellWish</h3>
         <p className="text-[#3436bc]">
           Connecting hearts, delivering care. Making caregiving simple, safe,
           and meaningful.
@@ -32,13 +40,13 @@ export default function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-[#03045e] hover:text-white transition-colors"
               >
                 <social.icon className="w-6 h-6" />
               </a>
             ))}
           </div>
-          <p className="text-gray-400">
+          <p className="text-[#03045e]">
             © {new Date().getFullYear()} WellWish. All rights reserved.
           </p>
         </div>
