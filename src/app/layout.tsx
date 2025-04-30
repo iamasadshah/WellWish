@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "WellWish - Connecting Hearts, Delivering Care",
+  title: "WellWish",
   description:
     "Find trusted caregivers or become one. WellWish makes caregiving simple, safe, and meaningful for everyone involved.",
 };
