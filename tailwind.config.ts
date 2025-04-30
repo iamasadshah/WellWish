@@ -9,15 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          lightest: "#caf0f8",
-          light: "#90e0ef",
-          DEFAULT: "#00b4d8",
-          dark: "#0077b6",
-        },
-        secondary: '#FFD93D',
-        accent: '#FF6B6B',
-        background: '#F7FAFC',
+        light: "#90e0ef",
+        secondary: '#0077b6',
+        background: '#caf0f8',
+        button: "#00b4d8",
         text: '#2D3748',
       },
       animation: {

@@ -8,63 +8,75 @@ import {
 
 const features = [
   {
-    icon: FaShieldAlt,
-    title: "Secure Payments",
-    description: "Safe and encrypted payment processing for all transactions.",
-    color: "bg-primary/10 text-primary",
+    tag: "#one",
+    title: "Reliability",
+    description:
+      "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
   },
   {
-    icon: FaUserCheck,
-    title: "Verified Caregivers",
-    description: "All caregivers undergo thorough background checks.",
-    color: "bg-secondary/10 text-secondary",
+    tag: "#two",
+    title: "Transparency",
+    description:
+      "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
   },
   {
-    icon: FaComments,
-    title: "Realtime Chat",
-    description: "Instant messaging for seamless communication.",
-    color: "bg-accent/10 text-accent",
-  },
-  {
-    icon: FaHeadset,
-    title: "24/7 Support",
-    description: "Round-the-clock customer support for all users.",
-    color: "bg-primary/10 text-primary",
-  },
-  {
-    icon: FaBell,
-    title: "Push Notifications",
-    description: "Stay updated with real-time notifications.",
-    color: "bg-secondary/10 text-secondary",
+    tag: "#three",
+    title: "Simplicity",
+    description:
+      "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
   },
 ];
 
 export default function Features() {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-text mb-12">
-          Why Choose WellWish?
-        </h2>
+    <section className="bg-[#1E1B3A] py-24 px-4">
+      <div className="container mx-auto max-w-7xl">
+        <h1 className="text-6xl font-bold text-white mb-16">Features</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div
-              key={index}
-              className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow animate-slide-up"
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              <div
-                className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${feature.color}`}
-              >
-                <feature.icon className="w-8 h-8" />
+            <div key={index} className="group relative">
+              {/* Feature tag */}
+              <div className="absolute -top-4 left-6 z-10">
+                <span className="bg-[#B8B8FF] bg-opacity-90 text-[#1E1B3A] px-4 py-2 rounded-full text-sm font-medium">
+                  {feature.tag}
+                </span>
               </div>
-              <h3 className="text-xl font-semibold text-text mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600">{feature.description}</p>
+
+              {/* Feature card */}
+              <div className="bg-[#2C1B4B] rounded-[2rem] p-8 pt-12 h-full transition-transform duration-300 group-hover:-translate-y-2">
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Sign up button */}
+        <div className="mt-16">
+          <button className="group inline-flex items-center bg-white rounded-full text-[#1E1B3A] overflow-hidden">
+            <span className="px-6 py-3 text-lg font-semibold">Sign up</span>
+            <span className="w-12 h-12 flex items-center justify-center bg-[#1E1B3A] text-white transition-transform group-hover:translate-x-1">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
     </section>
