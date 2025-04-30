@@ -52,7 +52,7 @@ export default function Testimonials() {
     <section className=" py-24 min-h-screen relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-6xl relative">
         {/* Quote Icon */}
-        <div className="absolute top-0 right-8 text-[#2C1B4B] opacity-50">
+        <div className="absolute top-0 right-8 text-[#90e0ef] opacity-50">
           <FaQuoteRight size={120} />
         </div>
 
@@ -70,12 +70,12 @@ export default function Testimonials() {
               }`}
             >
               <div className="max-w-4xl mx-auto">
-                <p className="text-white text-2xl md:text-3xl leading-relaxed mb-12">
+                <p className="text-[#00b4d8] text-2xl md:text-3xl leading-relaxed mb-12">
                   {testimonial.text}
                 </p>
 
                 <div className="flex items-center justify-center">
-                  <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white">
+                  <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-[#00b4d8]">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
@@ -83,7 +83,7 @@ export default function Testimonials() {
                       className="object-cover"
                     />
                   </div>
-                  <h3 className="text-white text-xl font-semibold ml-4">
+                  <h3 className="text-black text-xl font-semibold ml-4">
                     {testimonial.name}
                   </h3>
                 </div>
@@ -96,14 +96,14 @@ export default function Testimonials() {
         <div className="flex justify-between absolute top-1/2 -translate-y-1/2 left-0 right-0 px-4">
           <button
             onClick={handlePrevious}
-            className="text-white/50 hover:text-white transition-colors"
+            className="text-[#00b4d8] hover:text-black transition-colors"
             disabled={isAnimating}
           >
             <FaChevronLeft size={40} />
           </button>
           <button
             onClick={handleNext}
-            className="text-white/50 hover:text-white transition-colors"
+            className="text-[#00b4d8] hover:text-black transition-colors"
             disabled={isAnimating}
           >
             <FaChevronRight size={40} />

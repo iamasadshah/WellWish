@@ -32,17 +32,17 @@ export default function Features() {
             <div key={index} className="group relative">
               {/* Feature tag */}
               <div className="absolute -top-4 left-6 z-10">
-                <span className="bg-[#B8B8FF] bg-opacity-90 text-[#1E1B3A] px-4 py-2 rounded-full text-sm font-medium">
+                <span className="bg-[#90e0ef] bg-opacity-90 text-[#1E1B3A] px-4 py-2 rounded-full text-sm font-medium">
                   {feature.tag}
                 </span>
               </div>
 
               {/* Feature card */}
-              <div className="bg-light rounded-[2rem] p-8 pt-12 h-full transition-transform duration-300 group-hover:-translate-y-2">
-                <h3 className="text-3xl font-bold text-texte mb-4">
+              <div className="bg-[#00b4d8] rounded-[2rem] p-8 pt-12 h-full transition-transform duration-300 group-hover:-translate-y-2">
+                <h3 className="text-3xl font-bold text-black mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-300 text-lg leading-relaxed">
+                <p className="text-gray-800 text-lg leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -52,9 +52,9 @@ export default function Features() {
 
         {/* Sign up button */}
         <div className="mt-16">
-          <button className="group inline-flex items-center bg-white rounded-full text-[#1E1B3A] overflow-hidden">
+          <button className="group inline-flex items-center bg-[#00b4d8] rounded-full text-[#1E1B3A] overflow-hidden px-1">
             <span className="px-6 py-3 text-lg font-semibold">Sign up</span>
-            <span className="w-12 h-12 flex items-center justify-center bg-[#1E1B3A] text-texte transition-transform group-hover:translate-x-1">
+            <span className="w-16 h-12 rounded-full flex items-center justify-center bg-[#90e0ef] text-texte transition-transform group-hover:translate-x-1">
               <svg
                 className="w-6 h-6"
                 fill="none"

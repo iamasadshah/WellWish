@@ -44,10 +44,10 @@ export default function About() {
               involved.
             </p>
             <Link href="/about" className="inline-flex items-center group">
-              <span className="bg-button text-text px-6 py-3 rounded-l-full font-medium">
+              <span className="bg-[#00b4d8] text-text px-6 py-3 rounded-l-full font-medium">
                 Read more
               </span>
-              <span className="bg-primary-lightest p-3 rounded-r-full group-hover:bg-primary-light transition-colors">
+              <span className="bg-[#90e0ef] p-3 rounded-r-full group-hover:bg-primary-light transition-colors">
                 <svg
                   className="w-6 h-6 text-primary-dark group-hover:translate-x-1 transition-transform"
                   fill="none"
