@@ -34,7 +34,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="bg-[#1E1B3A] py-24 px-4 min-h-screen relative">
+    <section className=" py-24 px-4 min-h-screen relative">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Left Content */}

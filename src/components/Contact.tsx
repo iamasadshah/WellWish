@@ -27,7 +27,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="bg-[#1E1B3A] min-h-screen py-24 px-4">
+    <section className=" min-h-screen py-24 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Left Content */}
@@ -39,7 +39,7 @@ export default function Contact() {
             </p>
             <Link
               href="#faq"
-              className="inline-flex items-center text-[#00b4d8] hover:text-[#90e0ef] transition-colors group"
+              className="inline-flex items-center text-buttons hover:text-shadoww transition-colors group"
             >
               <span className="border-b border-current">Jump to FAQ</span>
               <svg
@@ -71,13 +71,13 @@ export default function Contact() {
                     htmlFor="firstName"
                     className="block text-white text-lg"
                   >
-                    First name<span className="text-[#00b4d8]">*</span>
+                    First name<span className="text-buttons">*</span>
                   </label>
                   <input
                     type="text"
                     id="firstName"
                     placeholder="Name"
-                    className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 placeholder-gray-500 focus:border-[#00b4d8] focus:outline-none transition-colors"
+                    className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 placeholder-gray-500 focus:border-buttons focus:outline-none transition-colors"
                     value={formData.firstName}
                     onChange={(e) =>
                       setFormData({ ...formData, firstName: e.target.value })
@@ -91,13 +91,13 @@ export default function Contact() {
                     htmlFor="lastName"
                     className="block text-white text-lg"
                   >
-                    Last name<span className="text-[#00b4d8]">*</span>
+                    Last name<span className="text-buttons">*</span>
                   </label>
                   <input
                     type="text"
                     id="lastName"
                     placeholder="Surname"
-                    className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 placeholder-gray-500 focus:border-[#00b4d8] focus:outline-none transition-colors"
+                    className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 placeholder-gray-500 focus:border-buttons focus:outline-none transition-colors"
                     value={formData.lastName}
                     onChange={(e) =>
                       setFormData({ ...formData, lastName: e.target.value })
@@ -110,13 +110,13 @@ export default function Contact() {
               {/* Email Field */}
               <div className="space-y-2">
                 <label htmlFor="email" className="block text-white text-lg">
-                  Email<span className="text-[#00b4d8]">*</span>
+                  Email<span className="text-buttons">*</span>
                 </label>
                 <input
                   type="email"
                   id="email"
                   placeholder="Enter your email address here"
-                  className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 placeholder-gray-500 focus:border-[#00b4d8] focus:outline-none transition-colors"
+                  className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 placeholder-gray-500 focus:border-buttons focus:outline-none transition-colors"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
@@ -133,7 +133,7 @@ export default function Contact() {
                 <div className="relative">
                   <select
                     id="topic"
-                    className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 focus:border-[#00b4d8] focus:outline-none appearance-none cursor-pointer"
+                    className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 focus:border-buttons focus:outline-none appearance-none cursor-pointer"
                     value={formData.topic}
                     onChange={(e) =>
                       setFormData({ ...formData, topic: e.target.value })
@@ -173,13 +173,13 @@ export default function Contact() {
               {/* Message Field */}
               <div className="space-y-2">
                 <label htmlFor="message" className="block text-white text-lg">
-                  Your message<span className="text-[#00b4d8]">*</span>
+                  Your message<span className="text-buttons">*</span>
                 </label>
                 <textarea
                   id="message"
                   placeholder="Write your message here..."
                   rows={4}
-                  className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 placeholder-gray-500 focus:border-[#00b4d8] focus:outline-none transition-colors resize-none"
+                  className="w-full bg-transparent border-b border-gray-600 text-white px-0 py-2 placeholder-gray-500 focus:border-buttons focus:outline-none transition-colors resize-none"
                   value={formData.message}
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
@@ -191,7 +191,7 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="group inline-flex items-center bg-[#00b4d8] text-white px-8 py-3 rounded-full hover:bg-[#90e0ef] transition-colors"
+                className="group inline-flex items-center bg-buttons text-white px-8 py-3 rounded-full hover:bg-shadoww transition-colors"
               >
                 <span className="font-medium">Submit</span>
                 <svg

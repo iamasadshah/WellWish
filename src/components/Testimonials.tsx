@@ -49,7 +49,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="bg-[#1E1B3A] py-24 min-h-screen relative overflow-hidden">
+    <section className=" py-24 min-h-screen relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-6xl relative">
         {/* Quote Icon */}
         <div className="absolute top-0 right-8 text-[#2C1B4B] opacity-50">

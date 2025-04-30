@@ -1,10 +1,4 @@
-import {
-  FaShieldAlt,
-  FaUserCheck,
-  FaComments,
-  FaHeadset,
-  FaBell,
-} from "react-icons/fa";
+import React from "react";
 
 const features = [
   {
@@ -29,9 +23,9 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="bg-[#1E1B3A] py-24 px-4">
+    <section className="bg-[#caf0f8] py-24 px-4">
       <div className="container mx-auto max-w-7xl">
-        <h1 className="text-6xl font-bold text-white mb-16">Features</h1>
+        <h1 className="text-6xl font-bold text-text mb-16">Features</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
@@ -44,8 +38,8 @@ export default function Features() {
               </div>
 
               {/* Feature card */}
-              <div className="bg-[#2C1B4B] rounded-[2rem] p-8 pt-12 h-full transition-transform duration-300 group-hover:-translate-y-2">
-                <h3 className="text-3xl font-bold text-white mb-4">
+              <div className="bg-light rounded-[2rem] p-8 pt-12 h-full transition-transform duration-300 group-hover:-translate-y-2">
+                <h3 className="text-3xl font-bold text-texte mb-4">
                   {feature.title}
                 </h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
@@ -60,7 +54,7 @@ export default function Features() {
         <div className="mt-16">
           <button className="group inline-flex items-center bg-white rounded-full text-[#1E1B3A] overflow-hidden">
             <span className="px-6 py-3 text-lg font-semibold">Sign up</span>
-            <span className="w-12 h-12 flex items-center justify-center bg-[#1E1B3A] text-white transition-transform group-hover:translate-x-1">
+            <span className="w-12 h-12 flex items-center justify-center bg-[#1E1B3A] text-texte transition-transform group-hover:translate-x-1">
               <svg
                 className="w-6 h-6"
                 fill="none"

@@ -10,7 +10,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white text-center px-8 py-12">
+    <footer className=" text-white text-center px-8 py-12">
       {/* Company Info */}
       <div>
         <h3 className="text-lg font-semibold mb-4">WellWish</h3>

@@ -9,11 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        light: "#90e0ef",
-        secondary: '#0077b6',
-        background: '#caf0f8',
-        button: "#00b4d8",
-        text: '#2D3748',
+        lighter: "#caf0f8",
+        light: "#00b4d8",
+        dark: "#0077b6",
+        shadoww: "#90e0ef"
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

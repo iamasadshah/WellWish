@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section className="bg-background min-h-screen py-24 px-4">
+    <section className=" min-h-screen py-24 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left Image Section */}
