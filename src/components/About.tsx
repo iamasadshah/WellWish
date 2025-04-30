@@ -18,7 +18,7 @@ export default function About() {
                   }}
                 >
                   <Image
-                    src="/assets/hero-bg.jpg"
+                    src="/assets/about.jpg"
                     alt="About WellWish"
                     fill
                     className="object-cover"

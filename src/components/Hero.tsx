@@ -50,12 +50,13 @@ export default function Hero() {
             <div className="absolute  inset-4 bg-primary-light/30 rounded-blob transform -rotate-12"></div>
 
             {/* Main Image Container */}
-            <div className="absolute inset-8 overflow-hidden rounded-blob transform rotate-12 ">
+            <div className="absolute inset-8 overflow-hidden rounded-blob transform  h-full w-full">
               <Image
-                src="/assets/hero-image.jpg"
+                src="/assets/hero-img.png"
                 alt="Caring professional helping someone"
-                fill
-                className="object-cover transform -rotate-12 hover:scale-110 transition-transform duration-500"
+                width={1000}
+                height={1000}
+                className="object-cover"
                 priority
               />
             </div>

@@ -7,17 +7,17 @@ const testimonials = [
   {
     name: "Olivia Wilson",
     text: "Finding a reliable caregiver for my elderly father was always a challenge until I discovered this platform. It connected me with a compassionate and experienced caregiver within my local area. The entire process was smooth, and I finally have peace of mind knowing my father is in good hands!",
-    image: "/assets/testimonials/olivia.jpg",
+    image: "/assets/olivia.png",
   },
   {
     name: "Michael Chen",
     text: "The platform's user-friendly interface and thorough vetting process made it easy to find the perfect caregiver. The communication tools and scheduling features are excellent, making coordination effortless.",
-    image: "/assets/testimonials/michael.jpg",
+    image: "/assets/michael.png",
   },
   {
     name: "Sarah Johnson",
     text: "I'm impressed by the quality of care and professionalism. The caregivers are well-trained, compassionate, and truly care about their clients. It's been a game-changer for our family.",
-    image: "/assets/testimonials/sarah.jpg",
+    image: "/assets/sarah.png",
   },
 ];
 
