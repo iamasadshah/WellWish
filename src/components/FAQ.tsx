@@ -39,19 +39,19 @@ export default function FAQ() {
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Left Content */}
           <div className="lg:w-1/3">
-            <h1 className="text-5xl font-bold text-white mb-6">
+            <h1 className="text-5xl font-bold text-[#00b4d8] mb-6">
               Frequently Asked Questions
             </h1>
-            <p className="text-gray-300 text-lg mb-8">
+            <p className="text-[#00b4d8] text-lg mb-8">
               Got more questions? Feel free to contact us for more information.
             </p>
             <Link href="/contact" className="inline-flex items-center group">
-              <span className="bg-white text-[#1E1B3A] px-6 py-3 rounded-l-full font-medium">
+              <span className="bg-[#00b4d8] text-black px-6 py-3 rounded-l-full font-medium">
                 Contact us
               </span>
-              <span className="bg-[#2C1B4B] p-3 rounded-r-full">
+              <span className="bg-[#90e0ef] p-3 rounded-r-full">
                 <svg
-                  className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform"
+                  className="w-6 h-6 text-black group-hover:translate-x-1 transition-transform"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -74,9 +74,9 @@ export default function FAQ() {
               <div key={index} className="relative">
                 <button
                   onClick={() => toggleQuestion(index)}
-                  className="w-full text-left bg-[#2C1B4B] hover:bg-[#372359] transition-colors rounded-2xl px-8 py-6 flex items-center justify-between group"
+                  className="w-full text-left bg-[#90e0ef] hover:bg-[#372359] transition-colors rounded-2xl px-8 py-6 flex items-center justify-between group"
                 >
-                  <h3 className="text-2xl font-semibold text-white">
+                  <h3 className="text-2xl font-semibold text-[#03045e]">
                     {faq.question}
                   </h3>
                   <span className="flex-shrink-0 ml-4">
