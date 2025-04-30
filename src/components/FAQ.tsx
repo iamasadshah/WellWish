@@ -74,14 +74,14 @@ export default function FAQ() {
               <div key={index} className="relative">
                 <button
                   onClick={() => toggleQuestion(index)}
-                  className="w-full text-left bg-[#90e0ef] hover:bg-[#372359] transition-colors rounded-2xl px-8 py-6 flex items-center justify-between group"
+                  className="w-full text-left bg-[#90e0ef] hover:bg-[#00b4d8] transition-colors rounded-2xl px-8 py-6 flex items-center justify-between group"
                 >
                   <h3 className="text-2xl font-semibold text-[#03045e]">
                     {faq.question}
                   </h3>
                   <span className="flex-shrink-0 ml-4">
                     <svg
-                      className={`w-6 h-6 text-white transition-transform duration-300 ${
+                      className={`w-6 h-6 text-[#03045e] transition-transform duration-300 ${
                         openQuestion === index ? "rotate-45" : ""
                       }`}
                       fill="none"
@@ -98,7 +98,7 @@ export default function FAQ() {
                   </span>
                 </button>
                 {openQuestion === index && (
-                  <div className="mt-2 px-8 py-6 text-gray-300 text-lg leading-relaxed">
+                  <div className="mt-2 px-8 py-6 text-[#03045e] text-lg leading-relaxed">
                     {faq.answer}
                   </div>
                 )}
