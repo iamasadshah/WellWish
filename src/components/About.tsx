@@ -39,7 +39,7 @@ export default function About() {
               At WellWish, we believe in transforming the way care is delivered
               and received. Our platform connects compassionate caregivers with
               those who need them, creating meaningful relationships that go
-              beyond traditional care services. We're committed to making
+              beyond traditional care services. We&apos;re committed to making
               quality care accessible, personal, and seamless for everyone
               involved.
             </p>

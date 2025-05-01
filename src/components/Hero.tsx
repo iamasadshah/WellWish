@@ -16,7 +16,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-primary leading-relaxed">
-            At WellWish, we don't just connect users — we connect hearts.
+            At WellWish, we don&apos;t just connect users — we connect hearts.
             Because sometimes, a little care is all it takes to change a life.
           </p>
 

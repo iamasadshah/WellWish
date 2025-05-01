@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from "react-icons/fa";
 
 const testimonials = [
@@ -25,28 +25,28 @@ export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     if (isAnimating) return;
     setIsAnimating(true);
     setCurrentIndex((prev) =>
       prev === 0 ? testimonials.length - 1 : prev - 1
     );
     setTimeout(() => setIsAnimating(false), 500);
-  };
+  }, [isAnimating]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (isAnimating) return;
     setIsAnimating(true);
     setCurrentIndex((prev) =>
       prev === testimonials.length - 1 ? 0 : prev + 1
     );
     setTimeout(() => setIsAnimating(false), 500);
-  };
+  }, [isAnimating]);
 
   useEffect(() => {
     const interval = setInterval(handleNext, 8000); // Auto-advance every 8 seconds
     return () => clearInterval(interval);
-  }, []);
+  }, [handleNext]);
 
   return (
     <section className="py-12 md:py-0 min-h-screen relative overflow-hidden">
