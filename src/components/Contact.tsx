@@ -77,11 +77,11 @@ export default function Contact() {
       // Reset reCAPTCHA
       recaptchaRef.current?.reset();
       setRecaptchaValue(null);
-    } catch (error) {
+    } catch (error: unknown) {
+      console.error('Email sending failed:', error);
       setSubmitStatus({
         type: "error",
-        message:
-          "Sorry, there was an error sending your message. Please try again.",
+        message: "Sorry, there was an error sending your message. Please try again.",
       });
     } finally {
       setIsLoading(false);
