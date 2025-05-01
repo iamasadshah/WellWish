@@ -1,7 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
 const topics = [
   "General Inquiry",
@@ -26,9 +29,21 @@ export default function Contact() {
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!recaptchaValue) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please complete the reCAPTCHA verification.",
+      });
+      return;
+    }
+
     setIsLoading(true);
     setSubmitStatus({ type: null, message: "" });
 
@@ -51,6 +66,7 @@ export default function Contact() {
         type: "success",
         message: "Thank you for your message! We'll get back to you soon.",
       });
+      setIsDialogOpen(true);
       setFormData({
         firstName: "",
         lastName: "",
@@ -58,6 +74,9 @@ export default function Contact() {
         topic: "",
         message: "",
       });
+      // Reset reCAPTCHA
+      recaptchaRef.current?.reset();
+      setRecaptchaValue(null);
     } catch (error) {
       setSubmitStatus({
         type: "error",
@@ -105,14 +124,8 @@ export default function Contact() {
 
           {/* Right Content - Contact Form */}
           <div className="lg:w-2/3">
-            {submitStatus.type && (
-              <div
-                className={`mb-6 p-4 rounded-lg ${
-                  submitStatus.type === "success"
-                    ? "bg-green-100 text-green-700"
-                    : "bg-red-100 text-red-700"
-                }`}
-              >
+            {submitStatus.type === "error" && (
+              <div className="mb-6 p-4 rounded-lg bg-red-100 text-red-700">
                 {submitStatus.message}
               </div>
             )}
@@ -244,6 +257,16 @@ export default function Contact() {
                 />
               </div>
 
+              {/* reCAPTCHA */}
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_ID!}
+                  onChange={(value: string | null) => setRecaptchaValue(value)}
+                  theme="light"
+                />
+              </div>
+
               {/* Submit Button */}
               <button
                 type="submit"
@@ -301,6 +324,66 @@ export default function Contact() {
           </div>
         </div>
       </div>
+
+      {/* Success Dialog */}
+      <Transition appear show={isDialogOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="relative z-50"
+          onClose={() => setIsDialogOpen(false)}
+        >
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-opacity-25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-2xl font-bold leading-6 text-[#03045e] mb-4"
+                  >
+                    Message Sent Successfully!
+                  </Dialog.Title>
+                  <div className="mt-2">
+                    <p className="text-gray-600">
+                      Thank you for reaching out to us. We have received your
+                      message and will get back to you as soon as possible.
+                    </p>
+                  </div>
+
+                  <div className="mt-6">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center rounded-full border border-transparent bg-[#00b4d8] px-6 py-2 text-base font-medium text-white hover:bg-[#03045e] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b4d8] focus-visible:ring-offset-2 transition-colors"
+                      onClick={() => setIsDialogOpen(false)}
+                    >
+                      Got it, thanks!
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
     </section>
   );
 }
