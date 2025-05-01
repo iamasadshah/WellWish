@@ -6,7 +6,7 @@ const teamMembers = [
   {
     name: "Asad Shah",
     role: "Founder & CEO",
-    image: "/assets/team/john.jpg",
+    image: "/assets/team/asadshah.jpg",
     bio: "Passionate about healthcare technology and improving lives through innovation.",
     linkedin: "https://linkedin.com/in/johndoe",
   },
