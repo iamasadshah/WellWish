@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight, FaQuoteRight } from "react-icons/fa";
 const testimonials = [
   {
     name: "Olivia Wilson",
-    text: "Finding a reliable caregiver for my elderly father was always a challenge until I discovered this platform. It connected me with a compassionate and experienced caregiver within my local area. The entire process was smooth, and I finally have peace of mind knowing my father is in good hands!",
+    text: "Finding a reliable caregiver for my elderly father was always a challenge until I discovered this platform. It connected me with a compassionate and experienced caregiver within my local area.",
     image: "/assets/olivia.png",
   },
   {
@@ -78,7 +78,7 @@ export default function Testimonials() {
                 </p>
 
                 <div className="flex items-center justify-center">
-                  <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-[#00b4d8]">
+                  <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-[#00b4d8] -mt-6">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
