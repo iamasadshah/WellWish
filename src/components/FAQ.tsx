@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const faqs = [
   {
@@ -34,7 +33,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className=" py-24 px-4 min-h-screen relative">
+    <section className=" px-4 min-h-screen relative -mt-80">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Left Content */}

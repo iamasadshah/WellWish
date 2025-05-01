@@ -49,7 +49,10 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className=" py-24 min-h-screen relative overflow-hidden">
+    <section className=" py-12 min-h-screen relative overflow-hidden">
+      <h2 className="text-center text-3xl font-bold my-4 md:text-4xl">
+        Testimonials
+      </h2>
       <div className="container mx-auto px-4 max-w-6xl relative">
         {/* Quote Icon */}
         <div className="absolute top-0 right-8 text-[#90e0ef] opacity-50">
@@ -69,8 +72,8 @@ export default function Testimonials() {
                   : "opacity-0 translate-x-full"
               }`}
             >
-              <div className="max-w-4xl mx-auto">
-                <p className="text-[#00b4d8] text-2xl md:text-3xl leading-relaxed mb-12">
+              <div className="max-w-4xl mx-auto px-4">
+                <p className="text-[#00b4d8] text-ms md:text-3xl leading-relaxed mb-12">
                   {testimonial.text}
                 </p>
 
