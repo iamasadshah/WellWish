@@ -78,10 +78,11 @@ export default function Contact() {
       recaptchaRef.current?.reset();
       setRecaptchaValue(null);
     } catch (error: unknown) {
-      console.error('Email sending failed:', error);
+      console.error("Email sending failed:", error);
       setSubmitStatus({
         type: "error",
-        message: "Sorry, there was an error sending your message. Please try again.",
+        message:
+          "Sorry, there was an error sending your message. Please try again.",
       });
     } finally {
       setIsLoading(false);
