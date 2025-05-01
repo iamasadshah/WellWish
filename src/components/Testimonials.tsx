@@ -49,7 +49,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className=" py-12 min-h-screen relative overflow-hidden">
+    <section className="py-12 md:py-0 min-h-screen relative overflow-hidden">
       <h2 className="text-center text-3xl font-bold my-4 md:text-4xl">
         Testimonials
       </h2>
@@ -72,7 +72,7 @@ export default function Testimonials() {
                   : "opacity-0 translate-x-full"
               }`}
             >
-              <div className="max-w-4xl mx-auto px-4">
+              <div className="max-w-4xl mx-auto px-4 md:px-12">
                 <p className="text-[#00b4d8] text-ms md:text-3xl leading-relaxed mb-12">
                   {testimonial.text}
                 </p>

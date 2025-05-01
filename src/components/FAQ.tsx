@@ -33,7 +33,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className=" px-4 min-h-screen relative -mt-80">
+    <section className=" px-4 min-h-screen relative -mt-80 md:-my-96 lg:my-0">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Left Content */}

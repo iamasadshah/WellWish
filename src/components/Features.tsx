@@ -19,15 +19,21 @@ const features = [
     description:
       "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
   },
+  {
+    tag: "#four",
+    title: "Simplicity",
+    description:
+      "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
+  },
 ];
 
 export default function Features() {
   return (
-    <section className="bg-[#caf0f8] py-24 px-4">
+    <section className="bg-[#caf0f8] py-24 px-4 ">
       <div className="container mx-auto max-w-7xl">
         <h1 className="text-6xl font-bold text-text mb-16">Features</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <div key={index} className="group relative">
               {/* Feature tag */}
