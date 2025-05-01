@@ -8,14 +8,14 @@ const teamMembers = [
     role: "Founder & CEO",
     image: "/assets/team/asadshah.jpg",
     bio: "Passionate about healthcare technology and improving lives through innovation.",
-    linkedin: "https://linkedin.com/in/johndoe",
+    linkedin: "https://www.linkedin.com/in/iamasadshah/",
   },
   {
     name: "Omer Farooq",
     role: "Head of Product",
-    image: "/assets/team/jane.jpg",
+    image: "/assets/team/omerafrooq.jpg",
     bio: "Experienced product leader with a background in healthcare and user experience.",
-    linkedin: "https://linkedin.com/in/janesmith",
+    linkedin: "https://www.linkedin.com/in/omer-farooq-b288b524b/",
   },
 ];
 
@@ -51,15 +51,6 @@ export default function AboutPage() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/about-hero.jpg"
-            alt="About WellWish"
-            fill
-            className="object-cover brightness-50"
-            priority
-          />
-        </div>
         <div className="relative z-10 text-center text-[#03045e] px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             About WellWish
@@ -92,9 +83,9 @@ export default function AboutPage() {
                 innovation.
               </p>
             </div>
-            <div className="relative aspect-square rounded-2xl overflow-hidden">
+            <div className="relative aspect-square rounded-4xl overflow-hidden">
               <Image
-                src="/assets/about-story.jpg"
+                src="/assets/about-us.jpg"
                 alt="Our Story"
                 fill
                 className="object-cover"
