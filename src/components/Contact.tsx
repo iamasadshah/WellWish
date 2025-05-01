@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import emailjs from "@emailjs/browser";
 
 const topics = [
   "General Inquiry",
@@ -20,14 +21,56 @@ export default function Contact() {
     message: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", formData);
+    setIsLoading(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        topic: formData.topic,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID!
+      );
+
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you for your message! We'll get back to you soon.",
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        topic: "",
+        message: "",
+      });
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Sorry, there was an error sending your message. Please try again.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <section className=" min-h-screen py-24 px-4">
+    <section className="min-h-screen py-24 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Left Content */}
@@ -62,6 +105,17 @@ export default function Contact() {
 
           {/* Right Content - Contact Form */}
           <div className="lg:w-2/3">
+            {submitStatus.type && (
+              <div
+                className={`mb-6 p-4 rounded-lg ${
+                  submitStatus.type === "success"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-red-100 text-red-700"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
             <form
               onSubmit={handleSubmit}
               className="bg-[#00b4d8] rounded-3xl p-8 space-y-6"
@@ -76,54 +130,57 @@ export default function Contact() {
                     type="text"
                     id="firstName"
                     placeholder="Name"
-                    className="w-full bg-transparent border-b border-gray-600  px-0 py-2 placeholder-gray-500 focus:border-buttons focus:outline-none transition-colors"
+                    className="w-full bg-transparent border-b border-gray-600 px-0 py-2 placeholder-[#caf0f8] focus:border-buttons focus:outline-none transition-colors"
                     value={formData.firstName}
                     onChange={(e) =>
                       setFormData({ ...formData, firstName: e.target.value })
                     }
                     required
+                    disabled={isLoading}
                   />
                 </div>
 
                 <div className="space-y-2 text-[#03045e]">
-                  <label htmlFor="lastName" className="block  text-lg">
+                  <label htmlFor="lastName" className="block text-lg">
                     Last name<span className="text-buttons">*</span>
                   </label>
                   <input
                     type="text"
                     id="lastName"
                     placeholder="Surname"
-                    className="w-full bg-transparent border-b border-gray-600  px-0 py-2 placeholder-gray-500 focus:border-buttons focus:outline-none transition-colors"
+                    className="w-full bg-transparent border-b border-gray-600 px-0 py-2 placeholder-[#caf0f8] focus:border-buttons focus:outline-none transition-colors"
                     value={formData.lastName}
                     onChange={(e) =>
                       setFormData({ ...formData, lastName: e.target.value })
                     }
                     required
+                    disabled={isLoading}
                   />
                 </div>
               </div>
 
               {/* Email Field */}
               <div className="space-y-2 text-[#03045e]">
-                <label htmlFor="email" className="block  text-lg">
+                <label htmlFor="email" className="block text-lg">
                   Email<span className="text-buttons">*</span>
                 </label>
                 <input
                   type="email"
                   id="email"
                   placeholder="Enter your email address here"
-                  className="w-full bg-transparent border-b border-gray-600  px-0 py-2 placeholder-gray-500 focus:border-buttons focus:outline-none transition-colors"
+                  className="w-full bg-transparent border-b border-gray-600 px-0 py-2 placeholder-[#caf0f8] focus:border-buttons focus:outline-none transition-colors"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
+                  disabled={isLoading}
                 />
               </div>
 
               {/* Topic Selection */}
               <div className="space-y-2 text-[#03045e]">
-                <label htmlFor="topic" className="block  text-lg">
+                <label htmlFor="topic" className="block text-lg">
                   What is your message about?
                 </label>
                 <div className="relative">
@@ -134,7 +191,9 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, topic: e.target.value })
                     }
+                    disabled={isLoading}
                   >
+                    <option value="">Select a topic</option>
                     {topics.map((topic) => (
                       <option
                         key={topic}
@@ -147,7 +206,7 @@ export default function Contact() {
                   </select>
                   <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
                     <svg
-                      className="w-5 h-5 "
+                      className="w-5 h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -165,41 +224,78 @@ export default function Contact() {
 
               {/* Message Field */}
               <div className="space-y-2">
-                <label htmlFor="message" className="block  text-lg">
+                <label
+                  htmlFor="message"
+                  className="block text-lg text-[#03045e]"
+                >
                   Your message<span className="text-buttons">*</span>
                 </label>
                 <textarea
                   id="message"
                   placeholder="Write your message here..."
                   rows={4}
-                  className="w-full bg-transparent border-b border-gray-600  px-0 py-2 placeholder-gray-500 focus:border-buttons focus:outline-none transition-colors resize-none"
+                  className="w-full bg-transparent border-b border-gray-600 px-0 py-2 placeholder-[#caf0f8] focus:border-buttons focus:outline-none transition-colors resize-none"
                   value={formData.message}
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
                   required
+                  disabled={isLoading}
                 />
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="group inline-flex items-center bg-[#caf0f8]  px-8 py-3 rounded-full hover:bg-shadoww transition-colors"
+                disabled={isLoading}
+                className={`group inline-flex items-center bg-[#caf0f8] px-8 py-3 rounded-full transition-colors ${
+                  isLoading
+                    ? "opacity-70 cursor-not-allowed"
+                    : "hover:bg-shadoww cursor-pointer"
+                }`}
               >
-                <span className="font-medium ">Submit</span>
-                <svg
-                  className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+                {isLoading ? (
+                  <>
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-[#03045e]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    <span className="font-medium">Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="font-medium">Submit</span>
+                    <svg
+                      className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </>
+                )}
               </button>
             </form>
           </div>
