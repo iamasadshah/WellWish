@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <nav className="bg-[#caf0f8] fixed w-full top-0 z-50 h-[70px]">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 px-14 py-10">
+        <div className="flex items-center justify-between h-16 sm:px-10 md:px-14 py-10">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Image
@@ -69,8 +69,8 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-primary-lightest shadow-lg">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-primary-lightest shadow-lg ">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#caf0f8] ">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

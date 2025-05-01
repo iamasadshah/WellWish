@@ -4,10 +4,10 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className=" min-h-screen py-24 px-4 overflow-hidden">
-      <div className="container bg-gradient-to-br from-[#aaecf9] to-[#00b4d8] rounded-blob mx-auto flex flex-col-reverse lg:flex-row items-center max-w-6xl rounded-2xl px-6 shadow-xl shadow-gray-500">
+      <div className="container bg-gradient-to-br from-[#aaecf9] to-[#00b4d8] rounded-blob mx-auto flex flex-col-reverse lg:flex-row items-center max-w-6xl rounded-2xl px-6 shadow-xl shadow-gray-500 py-4 ">
         {/* Left Content */}
         <div className="w-full lg:w-1/2 space-y-6 pt-8 lg:pt-0">
-          <span className="inline-block bg-primary-dark/10 text-primary-dark px-4 py-2 rounded-full text-sm font-medium">
+          <span className="inline-block bg-[#00b4d8] text-primary-dark px-4 py-2 rounded-full text-sm font-medium">
             #wellwish
           </span>
 
@@ -43,12 +43,8 @@ export default function Hero() {
         </div>
 
         {/* Right Image */}
-        <div className="w-full lg:w-1/2 relative ">
+        <div className="w-full lg:w-1/2 relative flex flex-col justify-center items-center">
           <div className="relative w-full aspect-square max-w-[500px] mx-auto ">
-            {/* Background Shapes */}
-            <div className="absolute  inset-0 bg-primary/20 rounded-blob transform rotate-45 animate-pulse"></div>
-            <div className="absolute  inset-4 bg-primary-light/30 rounded-blob transform -rotate-12"></div>
-
             {/* Main Image Container */}
             <div className="absolute inset-8 overflow-hidden rounded-blob transform  h-full w-full">
               <Image
@@ -61,9 +57,9 @@ export default function Hero() {
               />
             </div>
 
-            {/* Decorative Elements */}
+            {/* Decorative Elements
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-lightest rounded-full animate-pulse"></div>
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary-dark/20 rounded-full animate-pulse delay-150"></div>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary-dark/20 rounded-full animate-pulse delay-150"></div> */}
           </div>
         </div>
       </div>
