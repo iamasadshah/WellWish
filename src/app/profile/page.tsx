@@ -3,7 +3,14 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
-import { FaUserCircle, FaEdit, FaCamera } from "react-icons/fa";
+import {
+  FaUserCircle,
+  FaEdit,
+  FaCamera,
+  FaSave,
+  FaTimes,
+} from "react-icons/fa";
+import Image from "next/image";
 
 interface ProfileData {
   full_name: string;
@@ -19,6 +26,7 @@ export default function ProfilePage() {
   const router = useRouter();
   const { user, loading } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [profileData, setProfileData] = useState<ProfileData>({
     full_name: "",
     bio: "",
@@ -37,7 +45,6 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (user) {
-      // Load profile data from Supabase
       const loadProfile = async () => {
         const { data, error } = await supabase
           .from("profiles")
@@ -80,17 +87,26 @@ export default function ProfilePage() {
     const file = e.target.files?.[0];
     if (!file || !user) return;
 
-    const fileExt = file.name.split(".").pop();
-    const fileName = `${user.id}-${Math.random()}.${fileExt}`;
-    const filePath = `avatars/${fileName}`;
+    setIsUploading(true);
+    try {
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${user.id}-${Math.random()}.${fileExt}`;
+      const filePath = `avatars/${fileName}`;
 
-    const { error: uploadError } = await supabase.storage
-      .from("avatars")
-      .upload(filePath, file);
+      const { error: uploadError } = await supabase.storage
+        .from("avatars")
+        .upload(filePath, file);
 
-    if (!uploadError) {
-      const { data } = supabase.storage.from("avatars").getPublicUrl(filePath);
-      setProfileData((prev) => ({ ...prev, avatar_url: data.publicUrl }));
+      if (!uploadError) {
+        const { data } = supabase.storage
+          .from("avatars")
+          .getPublicUrl(filePath);
+        setProfileData((prev) => ({ ...prev, avatar_url: data.publicUrl }));
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -109,27 +125,37 @@ export default function ProfilePage() {
           {/* Cover Photo */}
           <div className="h-48 bg-gradient-to-r from-blue-500 to-blue-600 relative">
             <div className="absolute -bottom-16 left-8">
-              <div className="relative">
+              <div className="relative group">
                 {profileData.avatar_url ? (
-                  <img
-                    src={profileData.avatar_url}
-                    alt="Profile"
-                    className="w-32 h-32 rounded-full border-4 border-white"
-                  />
+                  <div className="relative w-32 h-32">
+                    <Image
+                      src={profileData.avatar_url}
+                      alt="Profile"
+                      fill
+                      className="rounded-full border-4 border-white object-cover"
+                    />
+                  </div>
                 ) : (
                   <FaUserCircle className="w-32 h-32 text-white" />
                 )}
                 <label
                   htmlFor="avatar-upload"
-                  className="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-lg cursor-pointer hover:bg-gray-100"
+                  className={`absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-lg cursor-pointer hover:bg-gray-100 transition-all ${
+                    isUploading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 >
-                  <FaCamera className="w-5 h-5 text-gray-600" />
+                  {isUploading ? (
+                    <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-blue-500"></div>
+                  ) : (
+                    <FaCamera className="w-5 h-5 text-gray-600" />
+                  )}
                   <input
                     id="avatar-upload"
                     type="file"
                     accept="image/*"
                     className="hidden"
                     onChange={handleImageUpload}
+                    disabled={isUploading}
                   />
                 </label>
               </div>
@@ -138,8 +164,8 @@ export default function ProfilePage() {
 
           {/* Profile Content */}
           <div className="pt-20 pb-8 px-8">
-            <div className="flex justify-between items-start mb-6">
-              <div>
+            <div className="flex justify-between items-start mb-8">
+              <div className="space-y-1">
                 <h1 className="text-2xl font-bold text-gray-900">
                   {isEditing ? (
                     <input
@@ -151,7 +177,8 @@ export default function ProfilePage() {
                           full_name: e.target.value,
                         }))
                       }
-                      className="border rounded px-2 py-1"
+                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter your full name"
                     />
                   ) : (
                     profileData.full_name
@@ -159,19 +186,40 @@ export default function ProfilePage() {
                 </h1>
                 <p className="text-gray-600">{user?.email}</p>
               </div>
-              <button
-                onClick={() => (isEditing ? handleSave() : setIsEditing(true))}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                <FaEdit />
-                {isEditing ? "Save Changes" : "Edit Profile"}
-              </button>
+              <div className="flex gap-2">
+                {isEditing ? (
+                  <>
+                    <button
+                      onClick={handleSave}
+                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      <FaSave />
+                      Save Changes
+                    </button>
+                    <button
+                      onClick={() => setIsEditing(false)}
+                      className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                    >
+                      <FaTimes />
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <FaEdit />
+                    Edit Profile
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
                     Bio
                   </label>
                   {isEditing ? (
@@ -183,8 +231,9 @@ export default function ProfilePage() {
                           bio: e.target.value,
                         }))
                       }
-                      className="w-full border rounded px-3 py-2"
+                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       rows={4}
+                      placeholder="Tell us about yourself"
                     />
                   ) : (
                     <p className="text-gray-600">
@@ -193,8 +242,8 @@ export default function ProfilePage() {
                   )}
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
                     Work
                   </label>
                   {isEditing ? (
@@ -207,7 +256,8 @@ export default function ProfilePage() {
                           work: e.target.value,
                         }))
                       }
-                      className="w-full border rounded px-3 py-2"
+                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Your current position"
                     />
                   ) : (
                     <p className="text-gray-600">
@@ -216,8 +266,8 @@ export default function ProfilePage() {
                   )}
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
                     Location
                   </label>
                   {isEditing ? (
@@ -230,7 +280,8 @@ export default function ProfilePage() {
                           location: e.target.value,
                         }))
                       }
-                      className="w-full border rounded px-3 py-2"
+                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Your location"
                     />
                   ) : (
                     <p className="text-gray-600">
@@ -240,9 +291,9 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
                     Phone
                   </label>
                   {isEditing ? (
@@ -255,7 +306,8 @@ export default function ProfilePage() {
                           phone: e.target.value,
                         }))
                       }
-                      className="w-full border rounded px-3 py-2"
+                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Your phone number"
                     />
                   ) : (
                     <p className="text-gray-600">
@@ -264,8 +316,8 @@ export default function ProfilePage() {
                   )}
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
                     Website
                   </label>
                   {isEditing ? (
@@ -278,7 +330,8 @@ export default function ProfilePage() {
                           website: e.target.value,
                         }))
                       }
-                      className="w-full border rounded px-3 py-2"
+                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Your website URL"
                     />
                   ) : (
                     <p className="text-gray-600">
