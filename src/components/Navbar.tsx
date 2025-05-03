@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import useAuthModal from "@/hooks/useAuthModal";
+import AuthModal from "./AuthModal";
 
 const navLinks = [
   { href: "/find-caregiver", label: "Find CareGiver" },
@@ -12,6 +14,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const authModal = useAuthModal();
 
   return (
     <nav className="bg-[#caf0f8] fixed w-full top-0 z-50 h-[70px]">
@@ -58,12 +61,12 @@ export default function Navbar() {
 
           {/* Sign Up Button */}
           <div className="hidden md:block">
-            <Link
-              href="/signup"
+            <button
+              onClick={authModal.onOpen}
               className="bg-[#00b4d8] text-white px-8 py-4 rounded-full hover:bg-primary-dark transition-colors text-sm font-medium"
             >
               Sign up &rarr;
-            </Link>
+            </button>
           </div>
         </div>
 
@@ -92,6 +95,8 @@ export default function Navbar() {
           </div>
         )}
       </div>
+
+      <AuthModal isOpen={authModal.isOpen} onClose={authModal.onClose} />
     </nav>
   );
 }
