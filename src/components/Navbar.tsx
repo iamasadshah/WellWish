@@ -4,7 +4,9 @@ import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 import useAuthModal from "@/hooks/useAuthModal";
+import useAuth from "@/hooks/useAuth";
 import AuthModal from "./AuthModal";
+import UserMenu from "./UserMenu";
 
 const navLinks = [
   { href: "/find-caregiver", label: "Find CareGiver" },
@@ -15,6 +17,7 @@ const navLinks = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const authModal = useAuthModal();
+  const { user, loading } = useAuth();
 
   return (
     <nav className="bg-[#caf0f8] fixed w-full top-0 z-50 h-[70px]">
@@ -59,21 +62,29 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Sign Up Button */}
+          {/* Auth Section */}
           <div className="hidden md:block">
-            <button
-              onClick={authModal.onOpen}
-              className="bg-[#00b4d8] text-white px-8 py-4 rounded-full hover:bg-primary-dark transition-colors text-sm font-medium"
-            >
-              Sign up &rarr;
-            </button>
+            {!loading && (
+              <>
+                {user ? (
+                  <UserMenu />
+                ) : (
+                  <button
+                    onClick={authModal.onOpen}
+                    className="bg-[#00b4d8] text-white px-8 py-4 rounded-full hover:bg-primary-dark transition-colors text-sm font-medium"
+                  >
+                    Sign up &rarr;
+                  </button>
+                )}
+              </>
+            )}
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-primary-lightest shadow-lg ">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#caf0f8] ">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-primary-lightest shadow-lg">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#caf0f8]">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -84,13 +95,31 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/signup"
-                className="block px-3 py-2 text-primary hover:text-primary-dark transition-colors text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sign up
-              </Link>
+              {!loading && (
+                <>
+                  {user ? (
+                    <button
+                      onClick={() => {
+                        useAuth().signOut();
+                        setIsMenuOpen(false);
+                      }}
+                      className="block w-full px-3 py-2 text-left text-primary hover:text-primary-dark transition-colors text-base font-medium"
+                    >
+                      Sign out
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        authModal.onOpen();
+                        setIsMenuOpen(false);
+                      }}
+                      className="block w-full px-3 py-2 text-left text-primary hover:text-primary-dark transition-colors text-base font-medium"
+                    >
+                      Sign up
+                    </button>
+                  )}
+                </>
+              )}
             </div>
           </div>
         )}
