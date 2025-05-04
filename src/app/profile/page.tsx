@@ -9,6 +9,11 @@ import {
   FaCamera,
   FaSave,
   FaTimes,
+  FaBriefcase,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaGlobe,
+  FaUser,
 } from "react-icons/fa";
 import Image from "next/image";
 
@@ -112,7 +117,7 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
@@ -121,9 +126,9 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Cover Photo */}
-          <div className="h-48 bg-gradient-to-r from-blue-500 to-blue-600 relative">
+          <div className="h-48 bg-gradient-to-r from-blue-600 to-blue-800 relative">
             <div className="absolute -bottom-16 left-8">
               <div className="relative group">
                 {profileData.avatar_url ? (
@@ -132,7 +137,7 @@ export default function ProfilePage() {
                       src={profileData.avatar_url}
                       alt="Profile"
                       fill
-                      className="rounded-full border-4 border-white object-cover"
+                      className="rounded-full border-4 border-white object-cover shadow-lg"
                     />
                   </div>
                 ) : (
@@ -164,41 +169,44 @@ export default function ProfilePage() {
 
           {/* Profile Content */}
           <div className="pt-20 pb-8 px-8">
-            <div className="flex justify-between items-start mb-8">
-              <div className="space-y-1">
-                <h1 className="text-2xl font-bold text-gray-900">
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={profileData.full_name}
-                      onChange={(e) =>
-                        setProfileData((prev) => ({
-                          ...prev,
-                          full_name: e.target.value,
-                        }))
-                      }
-                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your full name"
-                    />
-                  ) : (
-                    profileData.full_name
-                  )}
-                </h1>
-                <p className="text-gray-600">{user?.email}</p>
+            <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-4">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <FaUser className="text-gray-400" />
+                  <h1 className="text-3xl font-bold text-gray-900">
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        value={profileData.full_name}
+                        onChange={(e) =>
+                          setProfileData((prev) => ({
+                            ...prev,
+                            full_name: e.target.value,
+                          }))
+                        }
+                        className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your full name"
+                      />
+                    ) : (
+                      profileData.full_name
+                    )}
+                  </h1>
+                </div>
+                <p className="text-gray-500 text-sm">{user?.email}</p>
               </div>
               <div className="flex gap-2">
                 {isEditing ? (
                   <>
                     <button
                       onClick={handleSave}
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
                     >
                       <FaSave />
                       Save Changes
                     </button>
                     <button
                       onClick={() => setIsEditing(false)}
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors shadow-sm"
                     >
                       <FaTimes />
                       Cancel
@@ -207,7 +215,7 @@ export default function ProfilePage() {
                 ) : (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
                   >
                     <FaEdit />
                     Edit Profile
@@ -216,11 +224,11 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Bio
+                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                    About Me
                   </label>
                   {isEditing ? (
                     <textarea
@@ -231,19 +239,19 @@ export default function ProfilePage() {
                           bio: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      rows={4}
-                      placeholder="Tell us about yourself"
+                      className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-[120px]"
+                      placeholder="Tell us about yourself..."
                     />
                   ) : (
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 leading-relaxed">
                       {profileData.bio || "No bio yet"}
                     </p>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
+                    <FaBriefcase className="text-gray-400" />
                     Work
                   </label>
                   {isEditing ? (
@@ -267,7 +275,8 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
+                    <FaMapMarkerAlt className="text-gray-400" />
                     Location
                   </label>
                   {isEditing ? (
@@ -293,8 +302,9 @@ export default function ProfilePage() {
 
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Phone
+                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
+                    <FaPhone className="text-gray-400" />
+                    Contact
                   </label>
                   {isEditing ? (
                     <input
@@ -317,7 +327,8 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
+                    <FaGlobe className="text-gray-400" />
                     Website
                   </label>
                   {isEditing ? (
