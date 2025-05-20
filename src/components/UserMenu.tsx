@@ -3,6 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { FaUserCircle } from "react-icons/fa";
 import Link from "next/link";
 import useAuth from "@/hooks/useAuth";
+import Image from "next/image";
 
 export default function UserMenu() {
   const { user, signOut } = useAuth();
@@ -11,7 +12,9 @@ export default function UserMenu() {
     <Menu as="div" className="relative">
       <Menu.Button className="flex items-center gap-2 text-gray-700 hover:text-gray-900 focus:outline-none">
         {user?.user_metadata?.avatar_url ? (
-          <img
+          <Image
+            width={32}
+            height={32}
             src={user.user_metadata.avatar_url}
             alt={user.email || "User avatar"}
             className="w-8 h-8 rounded-full"

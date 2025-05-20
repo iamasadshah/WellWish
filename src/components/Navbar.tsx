@@ -17,7 +17,12 @@ const navLinks = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const authModal = useAuthModal();
-  const { user, loading } = useAuth();
+  const { user, loading, signOut } = useAuth();
+
+  const handleSignOut = () => {
+    signOut();
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="bg-[#caf0f8] fixed w-full top-0 z-50 h-[70px]">
@@ -99,10 +104,7 @@ export default function Navbar() {
                 <>
                   {user ? (
                     <button
-                      onClick={() => {
-                        useAuth().signOut();
-                        setIsMenuOpen(false);
-                      }}
+                      onClick={handleSignOut}
                       className="block w-full px-3 py-2 text-left text-primary hover:text-primary-dark transition-colors text-base font-medium"
                     >
                       Sign out

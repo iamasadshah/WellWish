@@ -51,7 +51,7 @@ export default function ProfilePage() {
   useEffect(() => {
     if (user) {
       const loadProfile = async () => {
-        const { data, error } = await supabase
+        const { data } = await supabase
           .from("profiles")
           .select("*")
           .eq("id", user.id)
