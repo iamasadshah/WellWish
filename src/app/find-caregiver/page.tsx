@@ -47,7 +47,7 @@ const caregivers = [
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Michael",
     image: "/assets/avatars/avatar2.jpg",
     bio: "Experienced in pediatric care and special needs support. Certified in first aid and CPR.",
     specialization: "Pediatric Care",
