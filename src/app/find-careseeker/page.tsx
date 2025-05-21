@@ -190,7 +190,7 @@ const careSeekers = [
   },
   {
     id: 27,
-    name: "Daniel O'Connor",
+    name: "Daniel O&apos;Connor",
     age: 45,
     image: "/assets/avatars/avatar27.jpg",
     work: "Elderly Care",
@@ -327,7 +327,7 @@ export default function FindCareSeeker() {
                   href={`/chat/${seeker.id}`}
                   className="block w-full px-4 py-3 text-center bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300 font-medium"
                 >
-                  Let's Chat
+                  Let&apos;s Chat
                 </Link>
               </div>
             </div>
