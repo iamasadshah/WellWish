@@ -9,242 +9,212 @@ const careSeekers = [
   {
     id: 1,
     name: "Sarah Johnson",
+    age: 28,
     image: "/assets/avatars/avatar1.jpg",
     work: "Elderly Care",
-    timing: "9 AM - 5 PM",
-    location: "New York, NY",
   },
   {
     id: 2,
     name: "Michael Chen",
+    age: 32,
     image: "/assets/avatars/avatar2.jpg",
     work: "Babysitting",
-    timing: "Weekends",
-    location: "Los Angeles, CA",
   },
   {
     id: 3,
     name: "Emma Wilson",
+    age: 25,
     image: "/assets/avatars/avatar3.jpg",
     work: "Special Needs Care",
-    timing: "Flexible Hours",
-    location: "Chicago, IL",
   },
   {
     id: 4,
     name: "David Brown",
+    age: 45,
     image: "/assets/avatars/avatar4.jpg",
     work: "Elderly Care",
-    timing: "Night Shift",
-    location: "Miami, FL",
   },
   {
     id: 5,
     name: "Lisa Martinez",
+    age: 31,
     image: "/assets/avatars/avatar5.jpg",
     work: "Babysitting",
-    timing: "After School",
-    location: "Seattle, WA",
   },
   {
     id: 6,
     name: "James Wilson",
+    age: 29,
     image: "/assets/avatars/avatar6.jpg",
     work: "Special Needs Care",
-    timing: "Full Time",
-    location: "Boston, MA",
   },
   {
     id: 7,
     name: "Sophie Anderson",
+    age: 27,
     image: "/assets/avatars/avatar7.jpg",
     work: "Pet Care",
-    timing: "Weekday Mornings",
-    location: "Portland, OR",
   },
   {
     id: 8,
     name: "Raj Patel",
+    age: 35,
     image: "/assets/avatars/avatar8.jpg",
     work: "Housekeeping",
-    timing: "Weekday Evenings",
-    location: "Austin, TX",
   },
   {
     id: 9,
     name: "Maria Garcia",
+    age: 33,
     image: "/assets/avatars/avatar9.jpg",
     work: "Child Care",
-    timing: "Full Time",
-    location: "Denver, CO",
   },
   {
     id: 10,
     name: "John Smith",
+    age: 40,
     image: "/assets/avatars/avatar10.jpg",
     work: "Elderly Care",
-    timing: "Weekends Only",
-    location: "Phoenix, AZ",
   },
   {
     id: 11,
     name: "Yuki Tanaka",
+    age: 26,
     image: "/assets/avatars/avatar11.jpg",
     work: "Special Needs Care",
-    timing: "Part Time",
-    location: "San Francisco, CA",
   },
   {
     id: 12,
     name: "Olivia Lee",
+    age: 30,
     image: "/assets/avatars/avatar12.jpg",
     work: "Babysitting",
-    timing: "After School",
-    location: "Washington, DC",
   },
   {
     id: 13,
     name: "Carlos Rodriguez",
+    age: 34,
     image: "/assets/avatars/avatar13.jpg",
     work: "Pet Care",
-    timing: "Flexible Hours",
-    location: "Houston, TX",
   },
   {
     id: 14,
     name: "Aisha Khan",
+    age: 29,
     image: "/assets/avatars/avatar14.jpg",
     work: "Housekeeping",
-    timing: "Weekday Mornings",
-    location: "Atlanta, GA",
   },
   {
     id: 15,
     name: "Thomas Müller",
+    age: 38,
     image: "/assets/avatars/avatar15.jpg",
     work: "Elderly Care",
-    timing: "Night Shift",
-    location: "Philadelphia, PA",
   },
   {
     id: 16,
     name: "Priya Sharma",
+    age: 31,
     image: "/assets/avatars/avatar16.jpg",
     work: "Child Care",
-    timing: "Full Time",
-    location: "San Diego, CA",
   },
   {
     id: 17,
     name: "Lucas Silva",
+    age: 27,
     image: "/assets/avatars/avatar17.jpg",
     work: "Special Needs Care",
-    timing: "Weekends",
-    location: "Dallas, TX",
   },
   {
     id: 18,
     name: "Emma Thompson",
+    age: 25,
     image: "/assets/avatars/avatar18.jpg",
     work: "Babysitting",
-    timing: "After School",
-    location: "Minneapolis, MN",
   },
   {
     id: 19,
     name: "Hiroshi Yamamoto",
+    age: 33,
     image: "/assets/avatars/avatar19.jpg",
     work: "Pet Care",
-    timing: "Flexible Hours",
-    location: "Portland, OR",
   },
   {
     id: 20,
     name: "Fatima Ali",
+    age: 36,
     image: "/assets/avatars/avatar20.jpg",
     work: "Housekeeping",
-    timing: "Weekday Evenings",
-    location: "Detroit, MI",
   },
   {
     id: 21,
     name: "William Chen",
+    age: 42,
     image: "/assets/avatars/avatar21.jpg",
     work: "Elderly Care",
-    timing: "Full Time",
-    location: "Las Vegas, NV",
   },
   {
     id: 22,
     name: "Sophia Martinez",
+    age: 28,
     image: "/assets/avatars/avatar22.jpg",
     work: "Child Care",
-    timing: "Weekends Only",
-    location: "Orlando, FL",
   },
   {
     id: 23,
     name: "Mohammed Ahmed",
+    age: 30,
     image: "/assets/avatars/avatar23.jpg",
     work: "Special Needs Care",
-    timing: "Part Time",
-    location: "San Antonio, TX",
   },
   {
     id: 24,
     name: "Isabella Santos",
+    age: 26,
     image: "/assets/avatars/avatar24.jpg",
     work: "Babysitting",
-    timing: "After School",
-    location: "Nashville, TN",
   },
   {
     id: 25,
     name: "Alexander Kim",
+    age: 35,
     image: "/assets/avatars/avatar25.jpg",
     work: "Pet Care",
-    timing: "Flexible Hours",
-    location: "Salt Lake City, UT",
   },
   {
     id: 26,
     name: "Elena Popov",
+    age: 29,
     image: "/assets/avatars/avatar26.jpg",
     work: "Housekeeping",
-    timing: "Weekday Mornings",
-    location: "Charlotte, NC",
   },
   {
     id: 27,
     name: "Daniel O'Connor",
+    age: 45,
     image: "/assets/avatars/avatar27.jpg",
     work: "Elderly Care",
-    timing: "Night Shift",
-    location: "Pittsburgh, PA",
   },
   {
     id: 28,
     name: "Mei Lin",
+    age: 32,
     image: "/assets/avatars/avatar28.jpg",
     work: "Child Care",
-    timing: "Full Time",
-    location: "Sacramento, CA",
   },
   {
     id: 29,
     name: "Gabriel Santos",
+    age: 27,
     image: "/assets/avatars/avatar29.jpg",
     work: "Special Needs Care",
-    timing: "Weekends",
-    location: "Tampa, FL",
   },
   {
     id: 30,
     name: "Ava Johnson",
+    age: 31,
     image: "/assets/avatars/avatar30.jpg",
     work: "Babysitting",
-    timing: "After School",
-    location: "St. Louis, MO",
   },
 ];
 
@@ -263,9 +233,9 @@ export default function FindCareSeeker() {
 
   // Filter care seekers based on search term and work type
   const filteredCareSeekers = careSeekers.filter((seeker) => {
-    const matchesSearch =
-      seeker.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      seeker.location.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = seeker.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
     const matchesWork = selectedWork === "all" || seeker.work === selectedWork;
     return matchesSearch && matchesWork;
   });
@@ -304,7 +274,7 @@ export default function FindCareSeeker() {
           <div className="w-full sm:w-96">
             <input
               type="text"
-              placeholder="Search by name or location..."
+              placeholder="Search by name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -332,7 +302,7 @@ export default function FindCareSeeker() {
             >
               <div className="p-6">
                 {/* Profile Image */}
-                <div className="relative w-24 h-24 mx-auto mb-4">
+                <div className="relative w-32 h-32 mx-auto mb-4">
                   <Image
                     src={seeker.image}
                     alt={seeker.name}
@@ -346,32 +316,19 @@ export default function FindCareSeeker() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-1">
                     {seeker.name}
                   </h3>
-                  <p className="text-gray-600 mb-2">{seeker.location}</p>
-                  <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-                    <span className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full">
-                      {seeker.work}
-                    </span>
-                    <span className="px-3 py-1 bg-green-50 text-green-600 rounded-full">
-                      {seeker.timing}
-                    </span>
-                  </div>
+                  <p className="text-gray-600 mb-2">{seeker.age} years old</p>
+                  <span className="inline-block px-4 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">
+                    {seeker.work}
+                  </span>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex gap-3">
-                  <Link
-                    href={`/chat/${seeker.id}`}
-                    className="flex-1 px-4 py-2 text-center border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-colors duration-300"
-                  >
-                    Chat
-                  </Link>
-                  <Link
-                    href={`/book/${seeker.id}`}
-                    className="flex-1 px-4 py-2 text-center bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                  >
-                    Book Now
-                  </Link>
-                </div>
+                {/* Chat Button */}
+                <Link
+                  href={`/chat/${seeker.id}`}
+                  className="block w-full px-4 py-3 text-center bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300 font-medium"
+                >
+                  Let's Chat
+                </Link>
               </div>
             </div>
           ))}
