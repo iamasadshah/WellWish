@@ -10,7 +10,7 @@ import UserMenu from "./UserMenu";
 
 const navLinks = [
   { href: "/find-caregiver", label: "Find CareGiver" },
-  { href: "/become-caregiver", label: "Become CareGiver" },
+  { href: "/find-careseeker", label: "Find CareSeeker" },
   { href: "/about", label: "About" },
 ];
 
