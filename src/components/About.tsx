@@ -45,7 +45,7 @@ export default function About() {
             </p>
             <Link href="/about" className="inline-flex items-center group">
               <span className="bg-[#00b4d8] text-text px-6 py-3 rounded-l-full font-medium">
-                Read more
+                Read More
               </span>
               <span className="bg-[#90e0ef] p-3 rounded-r-full group-hover:bg-primary-light transition-colors">
                 <svg
