@@ -5,14 +5,14 @@ import { FaHeart, FaHandshake, FaUsers, FaChartLine } from "react-icons/fa";
 const teamMembers = [
   {
     name: "Asad Shah",
-    role: "Founder & CEO",
+    role: "Frontend Engineer",
     image: "/assets/team/asadshah.jpg",
     bio: "Passionate about healthcare technology and improving lives through innovation.",
     linkedin: "https://www.linkedin.com/in/iamasadshah/",
   },
   {
     name: "Omer Farooq",
-    role: "Head of Product",
+    role: "Backend Developer",
     image: "/assets/team/omerafrooq.jpg",
     bio: "Experienced product leader with a background in healthcare and user experience.",
     linkedin: "https://www.linkedin.com/in/omer-farooq-b288b524b/",
@@ -212,7 +212,7 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/signup"
+              href="/auth/signup"
               className="inline-flex items-center justify-center px-8 py-3 bg-[#00b4d8] text-white rounded-full hover:bg-[#03045e] transition-colors"
             >
               Get Started

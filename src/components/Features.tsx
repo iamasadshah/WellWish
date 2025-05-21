@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const features = [
   {
@@ -28,6 +30,7 @@ const features = [
 ];
 
 export default function Features() {
+  const router = useRouter();
   return (
     <section className="bg-[#caf0f8] py-24 px-4 ">
       <div className="container mx-auto max-w-7xl">
@@ -58,7 +61,12 @@ export default function Features() {
 
         {/* Sign up button */}
         <div className="mt-8 flex justify-center items-center">
-          <button className="group inline-flex items-center bg-[#00b4d8] rounded-full text-[#1E1B3A] overflow-hidden px-1">
+          <button
+            onClick={() => {
+              router.push("/auth/signup");
+            }}
+            className="group inline-flex items-center bg-[#00b4d8] rounded-full text-[#1E1B3A] overflow-hidden px-1 cursor-pointer"
+          >
             <span className="px-6 py-3 text-lg font-semibold">Sign up</span>
             <span className="w-16 h-12 rounded-full flex items-center justify-center bg-[#90e0ef] text-texte transition-transform group-hover:translate-x-1">
               <svg

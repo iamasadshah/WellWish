@@ -21,7 +21,7 @@ export default function Hero() {
           </p>
 
           <Link
-            href="/signup"
+            href="/auth/signup"
             className="inline-flex items-center bg-white text-[#00b4d8] px-8 py-3 rounded-full hover:bg-primary transition-colors text-lg font-medium group"
           >
             Start free today
