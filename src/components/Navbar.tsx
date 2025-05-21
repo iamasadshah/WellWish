@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import useAuthModal from "@/hooks/useAuthModal";
 import useAuth from "@/hooks/useAuth";
 import AuthModal from "./AuthModal";
@@ -18,6 +19,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const authModal = useAuthModal();
   const { user, loading, signOut } = useAuth();
+  const router = useRouter();
 
   const handleSignOut = () => {
     signOut();
@@ -75,8 +77,10 @@ export default function Navbar() {
                   <UserMenu />
                 ) : (
                   <button
-                    onClick={authModal.onOpen}
-                    className="bg-[#00b4d8] text-white px-8 py-4 rounded-full hover:bg-primary-dark transition-colors text-sm font-medium"
+                    onClick={() => {
+                      router.push("/auth/signup");
+                    }}
+                    className="bg-[#00b4d8] text-white px-8 py-4 rounded-full hover:bg-primary-dark transition-colors text-sm font-medium cursor-pointer"
                   >
                     Sign up &rarr;
                   </button>
