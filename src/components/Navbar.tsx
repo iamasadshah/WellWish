@@ -76,14 +76,20 @@ export default function Navbar() {
                 {user ? (
                   <UserMenu />
                 ) : (
-                  <button
-                    onClick={() => {
-                      router.push("/auth/signup");
-                    }}
-                    className="bg-[#00b4d8] text-white px-8 py-4 rounded-full hover:bg-primary-dark transition-colors text-sm font-medium cursor-pointer"
-                  >
-                    Sign up &rarr;
-                  </button>
+                  <div className="flex items-center space-x-4">
+                    <Link
+                      href="/auth/signin"
+                      className="text-primary-dark hover:text-primary transition-colors text-sm font-medium"
+                    >
+                      Sign in
+                    </Link>
+                    <Link
+                      href="/auth/signup"
+                      className="bg-[#00b4d8] text-white px-6 py-2 rounded-full hover:bg-primary-dark transition-colors text-sm font-medium"
+                    >
+                      Sign up
+                    </Link>
+                  </div>
                 )}
               </>
             )}
@@ -114,15 +120,22 @@ export default function Navbar() {
                       Sign out
                     </button>
                   ) : (
-                    <button
-                      onClick={() => {
-                        authModal.onOpen();
-                        setIsMenuOpen(false);
-                      }}
-                      className="block w-full px-3 py-2 text-left text-primary hover:text-primary-dark transition-colors text-base font-medium"
-                    >
-                      Sign up
-                    </button>
+                    <>
+                      <Link
+                        href="/auth/signin"
+                        className="block w-full px-3 py-2 text-left text-primary hover:text-primary-dark transition-colors text-base font-medium"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Sign in
+                      </Link>
+                      <Link
+                        href="/auth/signup"
+                        className="block w-full px-3 py-2 text-left text-primary hover:text-primary-dark transition-colors text-base font-medium"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Sign up
+                      </Link>
+                    </>
                   )}
                 </>
               )}

@@ -13,7 +13,7 @@ const teamMembers = [
   {
     name: "Omer Farooq",
     role: "Backend Developer",
-    image: "/assets/team/omerafrooq.jpg",
+    image: "/assets/team/omerfarooq.jpg",
     bio: "Experienced product leader with a background in healthcare and user experience.",
     linkedin: "https://www.linkedin.com/in/omer-farooq-b288b524b/",
   },

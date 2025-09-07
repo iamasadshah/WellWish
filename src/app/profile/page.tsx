@@ -227,7 +227,7 @@ export default function ProfilePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                  <label className="text-sm font-semibold text-gray-700 uppercase tracking-wider">
                     About Me
                   </label>
                   {isEditing ? (
@@ -250,7 +250,7 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
+                  <label className="text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
                     <FaBriefcase className="text-gray-400" />
                     Work
                   </label>
@@ -275,7 +275,7 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
+                  <label className="text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
                     <FaMapMarkerAlt className="text-gray-400" />
                     Location
                   </label>
@@ -302,7 +302,7 @@ export default function ProfilePage() {
 
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
+                  <label className="text-sm font-semibold text-gray-700 uppercase tracking-wider flex items-center gap-2">
                     <FaPhone className="text-gray-400" />
                     Contact
                   </label>

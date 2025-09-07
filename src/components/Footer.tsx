@@ -40,7 +40,7 @@ export default function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#03045e] hover:text-white transition-colors"
+                className="text-[#03045e] hover:scale-120 hover:rotate-45 transition-colors"
               >
                 <social.icon className="w-6 h-6" />
               </a>
