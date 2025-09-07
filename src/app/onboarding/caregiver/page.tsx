@@ -11,7 +11,6 @@ import {
   FaCamera, 
   FaFileAlt, 
   FaBriefcase, 
-  FaDollarSign, 
   FaCalendarAlt, 
   FaMapMarkerAlt,
   FaArrowLeft,
@@ -121,7 +120,7 @@ export default function CaregiverOnboarding() {
     };
     
     fetchProfile();
-  }, [user, loading, router]);
+  }, [user, loading, router, formData.availability]);
   
   // Update progress bar based on current step
   useEffect(() => {
@@ -399,7 +398,7 @@ export default function CaregiverOnboarding() {
                         Bio
                       </label>
                       <p className="text-sm text-gray-500 mb-2">
-                        Tell potential care seekers about yourself, your approach to caregiving, and why you're passionate about it.
+                        Tell potential care seekers about yourself, your approach to caregiving, and why you&apos;re passionate about it.
                       </p>
                       <textarea
                         id="bio"

@@ -1,9 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaSave, FaTimes } from "react-icons/fa";
 
@@ -59,18 +58,7 @@ export default function ProfileEditPage() {
   // Urgency level options
   const urgencyOptions = ["Low", "Medium", "High", "Immediate"];
 
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push("/login");
-      return;
-    }
-
-    if (user) {
-      fetchProfileData();
-    }
-  }, [user, loading, router]);
-
-  const fetchProfileData = async () => {
+  const fetchProfileData = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from("profiles")
@@ -88,7 +76,18 @@ export default function ProfileEditPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+      return;
+    }
+
+    if (user) {
+      fetchProfileData();
+    }
+  }, [user, loading, router, fetchProfileData]);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -222,7 +221,7 @@ export default function ProfileEditPage() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Profile Not Found</h2>
-          <p className="text-gray-600 mb-6">We couldn't find your profile information.</p>
+          <p className="text-gray-600 mb-6">We couldn&apos;t find your profile information.</p>
           <button
             onClick={() => router.push("/onboarding/role-selection")}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

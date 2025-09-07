@@ -73,7 +73,7 @@ export default function RoleSelection() {
           Welcome to WellWish
         </h2>
         <p className="mt-2 text-center text-lg text-gray-600">
-          Let's get started! Tell us how you'd like to use WellWish
+          Let&apos;s get started! Tell us how you&apos;d like to use WellWish
         </p>
       </div>
 
@@ -148,7 +148,7 @@ export default function RoleSelection() {
                       Care Seeker
                     </h4>
                     <p className="mt-1 text-sm text-gray-500">
-                      I'm looking for caregiving services for myself or a loved one
+                      I&apos;m looking for caregiving services for myself or a loved one
                     </p>
                   </div>
                 </div>

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
@@ -72,19 +72,7 @@ export default function ProfileDashboardPage() {
   const [completionPercentage, setCompletionPercentage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push("/login");
-      return;
-    }
-
-    if (user) {
-      fetchProfileData();
-      fetchProfileStats();
-    }
-  }, [user, loading, router]);
-
-  const fetchProfileData = async () => {
+  const fetchProfileData = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from("profiles")
@@ -103,25 +91,37 @@ export default function ProfileDashboardPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user]);
 
-  const fetchProfileStats = async () => {
+  const fetchProfileStats = useCallback(async () => {
     try {
       // In a real app, you would fetch actual stats from your database
-      // For now, we'll use mock data
+      // For now, we&apos;ll use mock data
       const mockStats: ProfileStats = {
         totalBookings: Math.floor(Math.random() * 20),
         pendingRequests: Math.floor(Math.random() * 5),
         completedServices: Math.floor(Math.random() * 15),
         averageRating: 4 + Math.random(),
-        profileViews: 50 + Math.floor(Math.random() * 100),
+        profileViews: 50 + Math.random() * 100,
       };
       
       setProfileStats(mockStats);
     } catch (error) {
       console.error("Error fetching stats:", error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+      return;
+    }
+
+    if (user) {
+      fetchProfileData();
+      fetchProfileStats();
+    }
+  }, [user, loading, router, fetchProfileData, fetchProfileStats]);
 
   const calculateProfileCompletion = (profile: ProfileData) => {
     const requiredFields = ["full_name", "avatar_url", "location"];
@@ -188,7 +188,7 @@ export default function ProfileDashboardPage() {
         <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
           <FaExclamationCircle className="mx-auto text-yellow-500 text-5xl mb-4" />
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Profile Not Found</h2>
-          <p className="text-gray-600 mb-6">We couldn't find your profile information. Let's set up your profile now.</p>
+          <p className="text-gray-600 mb-6">We couldn&apos;t find your profile information. Let&apos;s set up your profile now.</p>
           <button
             onClick={() => router.push("/onboarding/role-selection")}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

@@ -19,7 +19,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const authModal = useAuthModal();
   const { user, loading, signOut } = useAuth();
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleSignOut = () => {
     signOut();

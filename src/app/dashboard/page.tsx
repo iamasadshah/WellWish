@@ -88,7 +88,7 @@ export default function Dashboard() {
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Profile Not Found</h2>
           <p className="text-gray-600 mb-4">
-            We couldn't find your profile information.
+            We couldn&apos;t find your profile information.
           </p>
           <button
             onClick={() => router.push("/onboarding/role-selection")}

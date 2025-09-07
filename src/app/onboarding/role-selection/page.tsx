@@ -88,7 +88,7 @@ export default function RoleSelectionPage() {
             </div>
             <div className="p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                I'm a Caregiver
+                I&apos;m a Caregiver
               </h2>
               <p className="text-gray-600 mb-4">
                 I want to offer my caregiving services to those in need. I have
@@ -174,10 +174,10 @@ export default function RoleSelectionPage() {
             </div>
             <div className="p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                I'm a Care Seeker
+                I&apos;m a Care Seeker
               </h2>
               <p className="text-gray-600 mb-4">
-                I'm looking for qualified caregivers to provide care for myself
+                I&apos;m looking for qualified caregivers to provide care for myself
                 or a loved one. I need reliable and compassionate support.
               </p>
               <ul className="space-y-2 text-gray-700">

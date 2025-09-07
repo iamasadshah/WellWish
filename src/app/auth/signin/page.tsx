@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabase';
 
 export default function SignIn() {
-  const router = useRouter();
+  // const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

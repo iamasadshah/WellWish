@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FcGoogle } from 'react-icons/fc';
@@ -115,7 +114,7 @@ export default function SignUp() {
                 </div>
                 <p className="ml-3 text-sm text-gray-600">
                   <span className="font-medium text-gray-900">Secure Authentication</span>
-                  <span className="block">Your data is protected with Google's security</span>
+                  <span className="block">Your data is protected with Google&apos;s security</span>
                 </p>
               </div>
               <div className="flex items-start">
