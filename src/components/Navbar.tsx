@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import useAuthModal from "@/hooks/useAuthModal";
 import useAuth from "@/hooks/useAuth";
 import AuthModal from "./AuthModal";
